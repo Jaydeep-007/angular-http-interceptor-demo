@@ -1,0 +1,22 @@
+<h1>Angular HTTP Interceptor Demo</h1>
+
+<table class="table table-bordered border-primary">
+  <thead *ngIf="productData != null">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of productData">
+      <th scope="row">{{product.id}}</th>
+      <td>{{product.title}}</td>
+      <td>{{product.description}}</td>
+      <td>{{product.price | currency}}</td>
+      <td>{{product.category}}</td>
+    </tr>
+  </tbody>
+</table>
