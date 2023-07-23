@@ -13,18 +13,13 @@ export class LoggingInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(
-    req: HttpRequest<any>,
+    request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // Log the request
-    console.log(`Outgoing request: ${req.url}`);
-
-    return next.handle(req).pipe(
-      // Log the response
-      tap((event) => {
-        if (event instanceof HttpResponse) {
-          console.log(`Incoming response: ${event.url}`);
-        }
+    console.log('Outgoing HTTP request', request);
+    return next.handle(request).pipe(
+      tap((event: HttpEvent<any>) => {
+        console.log('Incoming HTTP response', event);
       })
     );
   }
